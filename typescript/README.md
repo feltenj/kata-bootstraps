@@ -16,3 +16,5 @@ $ npm test
 - [TypeScript Reference](https://www.typescriptlang.org/docs/handbook/intro.html)
 - [NodeJS Reference](https://nodejs.org/api/)
 - [Jest Reference](https://jestjs.io/docs/getting-started)
+
+This is a test commit
