@@ -1,4 +1,4 @@
-function add(number: string): string {
+export function add(number: string): string {
     if(number === ""){
         return "0"
     }
@@ -6,3 +6,5 @@ function add(number: string): string {
 
     })
 }
+
+

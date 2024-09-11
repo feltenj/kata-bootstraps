@@ -1,3 +1,5 @@
+import {add} from "./string_calculator";
+
 describe("A Test", () => {
   it("fails", () => {
     expect(false as boolean).toEqual(true as boolean);
@@ -8,7 +10,7 @@ describe("A Test", () => {
   });
 
   it("runs add()", () => {
-    expect(true as boolean).toEqual(true as boolean);
+    expect(add("1, 2")).toEqual(true as boolean);
   });
 
 });
