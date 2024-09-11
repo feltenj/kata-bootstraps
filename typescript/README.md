@@ -20,3 +20,4 @@ $ npm test
 
 Erik
 Elina
+Kriszti
