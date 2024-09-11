@@ -6,6 +6,9 @@ function add(number: string): number {
     }
 
     let splittedEquation = number.split(",");
+    if (splittedEquation.length === 1){
+        return Number(splittedEquation[0]);
+    }
     return Number(splittedEquation[0]) + Number(splittedEquation[1]);
 }
 
