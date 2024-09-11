@@ -3,6 +3,6 @@ function add(number: string): string {
         return "0"
     }
     number.split(",").forEach(number => {
-        n
+
     })
 }

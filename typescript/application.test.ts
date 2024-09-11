@@ -7,4 +7,8 @@ describe("A Test", () => {
     expect(true as boolean).toEqual(true as boolean);
   });
 
+  it("runs add()", () => {
+    expect(true as boolean).toEqual(true as boolean);
+  });
+
 });
