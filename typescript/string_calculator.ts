@@ -2,9 +2,11 @@ export function add(number: string): string {
     if(number === ""){
         return "0"
     }
-    number.split(",").forEach(number => {
-
+    let res = number.split(",").map(it => {
+        let number = parseFloat(it);
+        return number
     })
+    return "";
 }
 
 
