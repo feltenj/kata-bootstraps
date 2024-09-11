@@ -1,10 +1,12 @@
 function add(number: string): number {
-
     if (number === "1") {
       return 1;
     } else {
         return 0;
     }
+
+    var splittedEquation = number.split(",");
+    return (splittedEquation[0]+splittedEquation[1]);
 }
 
 
@@ -23,7 +25,7 @@ describe("Should return 1 when input 1", () => {
 
 describe("Comma separated input should add the separated values", () => {
     it("succeeds", () => {
-        expect(add("1")).toEqual(1);
+        expect(add("1,2")).toEqual(3);
     });
 });
 
