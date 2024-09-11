@@ -7,7 +7,7 @@ export function add(inputString: string): string {
         return sum + number;
     },0)
 
-    return res.toString();
+    return res.round().toString();
 }
 
 

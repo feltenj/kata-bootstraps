@@ -21,4 +21,16 @@ describe("A Test", () => {
     expect(add("1,2")).toEqual("3");
   });
 
+  it("twoNumber", () => {
+    expect(add("1,2")).toEqual("3");
+  });
+
+  it("oneCommaNumber", () => {
+    expect(add("1.1,2")).toEqual("3.1");
+  });
+
+  it("twoCommaNumber", () => {
+    expect(add("1.1,2.2")).toEqual("3.3");
+  });
+
 });
