@@ -2,14 +2,12 @@ export function add(inputString: string): string {
     if(inputString === ""){
         return "0"
     }
-    let res = inputString.split(",").map(it => {
-        let number = parseFloat(it);
-        return number
-    })
+    let res = inputString.split(",").reduce((sum, current) => {
+        let number = parseFloat(current);
+        return sum + number;
+    },0)
 
-    const resultAsNumber = res.reduce((sum, current) => sum + current, 0);
-
-    return resultAsNumber.toString();
+    return res.toString();
 }
 
 

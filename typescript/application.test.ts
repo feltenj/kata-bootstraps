@@ -17,4 +17,8 @@ describe("A Test", () => {
     expect(add("1")).toEqual("1");
   });
 
+  it("twoNumber", () => {
+    expect(add("1,2")).toEqual("3");
+  });
+
 });
