@@ -18,3 +18,6 @@ $ npm test
 - [Jest Reference](https://jestjs.io/docs/getting-started)
 
 This is a test commit
+
+Freddy
+Rebecca
