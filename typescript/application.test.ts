@@ -3,15 +3,15 @@ function add(number: string): string {
     if (number === "") {
         return "0";
 
-    } else if (number.includes(",")) {
+    } else if (number.includes(",") || number.includes("\n")) {
 
-        let splittedEquation = number.split(",");
+        let splittedEquation = number.split(/[, \n]/);
 
-        let numberArray = splittedEquation.map(function (number) {
-            return Number(number)
+        let numberArray = splittedEquation.map(function (value) {
+                return Number(value)
         });
 
-        let sum = 0;
+        let sum: string | number = 0;
         for (let i = 0; i < numberArray.length; i++) {
             sum += numberArray[i]
         }
@@ -49,4 +49,21 @@ describe("Check add method with unknown number of arguments", () => {
     });
 });
 
+describe("Check that add method can handle a newlines separator and comma", () => {
+    it("succeeds", () => {
+        expect(add("5\n90,5")).toEqual("100");
+    });
+});
+
+describe("Check that add method can handle only a newlines separator", () => {
+    it("succeeds", () => {
+        expect(add("5\n90")).toEqual("95");
+    });
+});
+
+describe("Check that add method throw an error by duplicated separator", () => {
+    it("succeeds", () => {
+        expect(add("5,90,\n5,5")).toEqual("Number expected but '\\n' found at position x");
+    });
+});
 
