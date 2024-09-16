@@ -10,6 +10,20 @@ function add(number: string): string {
   return String(Math.round(sum * 10) / 10);
 }
 
+// TODO continue here
+
+describe("Comma separated input should add the 3 separated values", () => {
+    it("succeeds", () => {
+        expect(add("1,2,3")).toEqual("6");
+    });
+});
+
+describe("Add should work on floats", () => {
+    it("succeeds", () => {
+        expect(add("1.1,2.2")).toEqual("3.3");
+    });
+});
+
 describe("When input is", () => {
   it("empty, sum should return 0", () => {
     expect(add("")).toEqual("0");
