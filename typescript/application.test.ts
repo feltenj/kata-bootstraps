@@ -5,16 +5,18 @@ function add(number: string): number {
         return 0;
     }
 
-    let splittedEquation = number.split(",");
-    let length = splittedEquation.length;
+    let splittedEquation = number.split(",").reduce((sum, current)=>{
+        return Number(sum)+Number(current);
+    },0);
+    /*let length = splittedEquation.length;
     if (length === 1) {
         return Number(splittedEquation[0]);
     }
     let sum = 0;
     for (let i = 0; i < length; i++) {
         sum += Number(splittedEquation[i])
-    }
-    return sum;
+    }*/
+    return splittedEquation;
 }
 
 
