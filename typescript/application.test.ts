@@ -6,10 +6,15 @@ function add(number: string): number {
     }
 
     let splittedEquation = number.split(",");
-    if (splittedEquation.length === 1){
+    let length = splittedEquation.length;
+    if (length === 1) {
         return Number(splittedEquation[0]);
     }
-    return Number(splittedEquation[0]) + Number(splittedEquation[1]);
+    let sum = 0;
+    for (let i = 0; i < length; i++) {
+        sum += Number(splittedEquation[i])
+    }
+    return sum;
 }
 
 
@@ -38,3 +43,8 @@ describe("Should return 2 when input 2", () => {
     });
 });
 
+describe("Comma separated input should add the 3 separated values", () => {
+    it("succeeds", () => {
+        expect(add("1,2,3")).toEqual(6);
+    });
+});
