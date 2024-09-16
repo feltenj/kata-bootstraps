@@ -18,8 +18,3 @@ $ npm test
 - [Jest Reference](https://jestjs.io/docs/getting-started)
 
 
-Erik
-Elina
-Kriszti
-Yannick
-Mouadh
