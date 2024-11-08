@@ -11,42 +11,53 @@ class ApplicationSpec() :
                         val livingNeighbours: LivingNeighbours,
                         val expectedCellState: CellState
                     ): WithDataTestName {
-                        override fun dataTestName(): String {
-                            return description
-                        }
+                        override fun dataTestName() = description
                     }
 
-                withData(
-                    TestCase("a living cell with 0 living neighbours dies in the next generation", LivingNeighbours(0), CellState.DEAD),
-                    TestCase("a living cell with 1 living neighbours dies in the next generation", LivingNeighbours(1), CellState.DEAD),
-                    TestCase("a living cell with 2 living neighbours survives to the next generation", LivingNeighbours(2), CellState.ALIVE),
-                ) { (desc, livingNeighbours, expectedCellState) ->
-                    val currentCellState = CellState.ALIVE
+      withData(
+        TestCase(
+          "underpopulation: a living cell with 0 living neighbours dies in the next generation",
+          LivingNeighbours(0),
+          CellState.DEAD
+        ),
+        TestCase(
+          "underpopulation: a living cell with 1 living neighbours dies in the next generation",
+          LivingNeighbours(1),
+          CellState.DEAD
+        ),
+        TestCase(
+          "survival: a living cell with 2 living neighbours survives to the next generation",
+          LivingNeighbours(2),
+          CellState.ALIVE
+        ),
+        TestCase(
+          "survival: a living cell with 3 living neighbours survives to the next generation",
+          LivingNeighbours(3),
+          CellState.ALIVE
+        ),
+        TestCase(
+          "overcrowding: a living cell with 4 living neighbours dies in the next generation",
+          LivingNeighbours(4),
+          CellState.DEAD
+        )
+      ) { (_, livingNeighbours, expectedCellState) ->
+        val currentCellState = CellState.ALIVE
 
-                    val nextCellState = nextGeneration(currentCellState, livingNeighbours)
+        val nextCellState = nextGeneration(currentCellState, livingNeighbours)
 
-                    nextCellState shouldBe expectedCellState
-                }
-
-            it("a living cell with 2 living neighbours survives in the next generation") {
-                val livingNeighbours = LivingNeighbours(2)
-                val currentCellState = CellState.ALIVE
-
-                val nextCellState = nextGeneration(currentCellState, livingNeighbours)
-
-                nextCellState shouldBe CellState.ALIVE
-            }
-        }
-    })
+        nextCellState shouldBe expectedCellState
+      }
+    }
+  })
 
 fun nextGeneration(currentCellState: CellState, livingNeighbours: LivingNeighbours): CellState {
-    if (livingNeighbours.value == 2) return CellState.ALIVE
-    return CellState.DEAD
+  if (livingNeighbours.value == 2 || livingNeighbours.value == 3) return CellState.ALIVE
+  return CellState.DEAD
 }
 
 enum class CellState {
-    ALIVE,
-    DEAD
+  ALIVE,
+  DEAD
 }
 
 @JvmInline
