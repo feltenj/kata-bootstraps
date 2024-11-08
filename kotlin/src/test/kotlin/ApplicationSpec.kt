@@ -9,8 +9,8 @@ class ApplicationSpec() :
             data class TestCase(
                 val description: String,
                 val livingNeighbours: LivingNeighbours,
-                val expectedCellState: CellState,
                 val currentCellState: CellState,
+                val expectedCellState: CellState,
             ) : WithDataTestName {
                 override fun dataTestName() = description
             }
@@ -19,46 +19,46 @@ class ApplicationSpec() :
                 TestCase(
                     description = "underpopulation: a living cell with 0 living neighbours dies in the next generation",
                     livingNeighbours = LivingNeighbours(0),
-                    expectedCellState = CellState.DEAD,
                     currentCellState = CellState.ALIVE,
+                    expectedCellState = CellState.DEAD,
                 ),
                 TestCase(
                     description = "underpopulation: a living cell with 1 living neighbours dies in the next generation",
                     livingNeighbours = LivingNeighbours(1),
-                    expectedCellState = CellState.DEAD,
                     currentCellState = CellState.ALIVE,
+                    expectedCellState = CellState.DEAD,
                 ),
                 TestCase(
                     description = "survival: a living cell with 2 living neighbours survives to the next generation",
                     livingNeighbours = LivingNeighbours(2),
-                    expectedCellState = CellState.ALIVE,
                     currentCellState = CellState.ALIVE,
+                    expectedCellState = CellState.ALIVE,
                 ),
                 TestCase(
                     description = "survival: a living cell with 3 living neighbours survives to the next generation",
                     livingNeighbours = LivingNeighbours(3),
-                    expectedCellState = CellState.ALIVE,
                     currentCellState = CellState.ALIVE,
+                    expectedCellState = CellState.ALIVE,
                 ),
                 TestCase(
                     description = "overcrowding: a living cell with 4 living neighbours dies in the next generation",
                     livingNeighbours = LivingNeighbours(4),
-                    expectedCellState = CellState.DEAD,
                     currentCellState = CellState.ALIVE,
+                    expectedCellState = CellState.DEAD,
                 ),
                 TestCase(
                     description = "staying dead: a dead cell with 2 living neighbours stays dead in the next generation",
                     livingNeighbours = LivingNeighbours(2),
-                    expectedCellState = CellState.DEAD,
-                    currentCellState = CellState.DEAD
+                    currentCellState = CellState.DEAD,
+                    expectedCellState = CellState.DEAD
                 ),
                 TestCase(
                     description = "reproduction: a dead cell with 3 living neighbours comes to life in the next generation",
                     livingNeighbours = LivingNeighbours(3),
-                    expectedCellState = CellState.ALIVE,
-                    currentCellState = CellState.DEAD
+                    currentCellState = CellState.DEAD,
+                    expectedCellState = CellState.ALIVE
                 ),
-            ) { (_, livingNeighbours, expectedCellState, currentCellState) ->
+            ) { (_, livingNeighbours, currentCellState, expectedCellState) ->
                 val nextCellState = nextGeneration(currentCellState, livingNeighbours)
 
                 nextCellState shouldBe expectedCellState
