@@ -12,12 +12,14 @@ class ApplicationSpec() :
                         val expectedCellState: CellState
                     ): WithDataTestName {
                         override fun dataTestName(): String {
-                           return description
+                            return description
                         }
                     }
 
-                withData(TestCase("a living cell with 0 living neighbours dies in the next generation", LivingNeighbours(0), CellState.DEAD)                    ,
-                    TestCase("a living cell with 1 living neighbours dies in the next generation", LivingNeighbours(1), CellState.DEAD)
+                withData(
+                    TestCase("a living cell with 0 living neighbours dies in the next generation", LivingNeighbours(0), CellState.DEAD),                    ,
+                    TestCase("a living cell with 1 living neighbours dies in the next generation", LivingNeighbours(1), CellState.DEAD),
+                    TestCase("a living cell with 2 living neighbours survives to the next generation", LivingNeighbours(2), CellState.ALIVE),
                 ) { (desc, livingNeighbours, expectedCellState) ->
                     val currentCellState = CellState.ALIVE
 
