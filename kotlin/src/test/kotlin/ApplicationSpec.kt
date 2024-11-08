@@ -5,7 +5,7 @@ import io.kotest.matchers.shouldBe
 
 class ApplicationSpec() :
     DescribeSpec({
-        describe("Game of Life") {
+        describe("Rules") {
             data class TestCase(
                 val description: String,
                 val livingNeighbours: LivingNeighbours,
@@ -63,8 +63,27 @@ class ApplicationSpec() :
 
                 nextCellState shouldBe expectedCellState
             }
+
         }
+
+        describe("World") {
+            it("has only dead cells") {
+                checkAll(Arb.int(), Arb.int()) { x, y ->
+                    val world = World()
+                    val position = Position(x, y)
+                    world.cellAt(position) shouldBe CellState.DEAD
+                }
+            }
+        }
+
+
     })
+
+data class Position(val x: Int, val y: Int)
+
+class World {
+    fun cellAt(position: Position): CellState = CellState.DEAD
+}
 
 fun nextGeneration(currentCellState: CellState, livingNeighbours: LivingNeighbours) =
     when (livingNeighbours.value) {
