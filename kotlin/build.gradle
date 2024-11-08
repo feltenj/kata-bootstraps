@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'kotlin'
 
 kotlin {
-    jvmToolchain(22)
+    jvmToolchain(21)
 }
 
 test {
@@ -19,6 +19,7 @@ test {
 
 dependencies {
     testImplementation 'io.kotest:kotest-runner-junit5:5.9.1'
+    testImplementation 'io.kotest:kotest-framework-datatest:5.9.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:2.0.21"
 }
 repositories {
